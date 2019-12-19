@@ -32,7 +32,7 @@ class Axes:
         if isinstance(obj, mpl.axes.Subplot):
             self._subplot(obj, data)
 
-        self.axis_options = []
+        self.axis_options = ["yticklabel style={/pgf/number format/fixed}"]
 
         # check if axes need to be displayed at all
         if not obj.axison:
@@ -599,7 +599,7 @@ def _get_ticks(data, xy, ticks, ticklabels):
             axis_options.append(
                 u"{}ticklabels={{{}}}".format(xy, u",".join(pgfplots_ticklabels))
             )
-    return axis_options
+    return axis_options + ["{xy}ticklabel style={/pgf/number format/fixed}".format(xy)]
 
 
 def _is_colorbar_heuristic(obj):
